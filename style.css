@@ -1,157 +1,326 @@
+/* ===== BLUSH DREAM CONTACT FORM ===== */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #f4f6f8;
-    min-height: 100vh;
+:root {
+    --bg: #fff5f8;
+    --card: #ffffff;
+    --input: #fff9fb;
+    --pink: #e98bb1;
+    --dark-pink: #c65f8b;
+    --text: #55404b;
+    --muted: #a38c99;
+    --border: #f1dce6;
+}
 
+body {
+    min-height: 100vh;
+    padding: 35px 18px;
     display: flex;
     justify-content: center;
     align-items: center;
-
-    padding: 30px 15px;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(circle at 12% 12%, #f9dce8 0%, transparent 32%),
+        radial-gradient(circle at 90% 88%, #fce8f0 0%, transparent 30%),
+        #fff7fa;
 }
+
+/* Main Layout */
 
 .container {
     width: 100%;
-    max-width: 600px;
+    max-width: 660px;
+    position: relative;
 }
+
+/* Form Card */
 
 .form-box {
-    background: white;
-    padding: 35px;
-    border-radius: 12px;
-
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+    padding: 42px;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid #f5dce7;
+    box-shadow:
+        0 22px 60px rgba(184, 106, 142, 0.12),
+        0 4px 14px rgba(184, 106, 142, 0.05);
 }
+
+/* Elegant Top Line */
+
+.form-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 15%;
+    width: 70%;
+    height: 3px;
+    border-radius: 0 0 10px 10px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #e98bb1,
+        #f5c4d8,
+        #e98bb1,
+        transparent
+    );
+}
+
+/* Heading */
 
 h1 {
     text-align: center;
-    margin-bottom: 8px;
-    color: #222;
+    font-size: 34px;
+    font-weight: 750;
+    letter-spacing: -0.8px;
+    margin-bottom: 10px;
+    color: #a94e77;
 }
 
 .subtitle {
     text-align: center;
-    color: #666;
-    margin-bottom: 30px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 32px;
 }
 
+/* Form Fields */
+
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 21px;
 }
 
 label {
     display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #333;
+    margin-bottom: 9px;
+    color: #715363;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.15px;
 }
+
+/* Inputs and Dropdown */
 
 input,
 select,
 textarea {
     width: 100%;
-    padding: 12px;
-
-    border: 1px solid #ccc;
-    border-radius: 6px;
-
-    font-size: 15px;
-    font-family: Arial, sans-serif;
-
+    padding: 14px 15px;
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    background: var(--input);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 14px;
     outline: none;
+    transition: all 0.25s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #bba5b1;
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+    border-color: #eab4cb;
+    background: #ffffff;
 }
 
 input:focus,
 select:focus,
 textarea:focus {
-    border-color: #555;
+    border-color: var(--pink);
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(233, 139, 177, 0.13);
 }
 
-textarea {
-    resize: vertical;
+/* Date Input */
+
+input[type="date"] {
+    color-scheme: light;
 }
+
+/* Dropdown */
+
+select {
+    cursor: pointer;
+}
+
+select option {
+    background: #ffffff;
+    color: var(--text);
+}
+
+/* Message Area */
+
+textarea {
+    min-height: 125px;
+    resize: vertical;
+    line-height: 1.7;
+}
+
+/* Gender Options */
 
 .gender-options {
     display: flex;
-    gap: 25px;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
 }
 
 .radio-label {
     display: flex;
     align-items: center;
-    gap: 7px;
-
-    font-weight: normal;
-}
-
-.radio-label input {
-    width: auto;
-}
-
-button {
-    width: 100%;
-
-    padding: 13px;
-
-    border: none;
-    border-radius: 6px;
-
-    background: #222;
-    color: white;
-
-    font-size: 16px;
-    font-weight: bold;
-
+    gap: 8px;
+    color: #8d6b7d;
+    font-weight: 400;
     cursor: pointer;
 }
 
+.radio-label input {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    padding: 0;
+    accent-color: var(--dark-pink);
+    cursor: pointer;
+}
+
+/* Submit Button */
+
+button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 4px;
+    border: 1px solid #e8a2bf;
+    border-radius: 11px;
+    background: linear-gradient(
+        110deg,
+        #d96f9b,
+        #e98bb1,
+        #efabc6
+    );
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.35px;
+    cursor: pointer;
+    box-shadow: 0 7px 18px rgba(217, 111, 155, 0.20);
+    transition: all 0.25s ease;
+}
+
 button:hover {
-    background: #444;
+    transform: translateY(-2px);
+    box-shadow: 0 11px 24px rgba(217, 111, 155, 0.28);
+    filter: brightness(1.03);
+}
+
+button:active {
+    transform: translateY(0);
 }
 
 button:disabled {
-    background: #888;
+    background: #e7d0dc;
+    border-color: #e7d0dc;
+    box-shadow: none;
+    color: #987e8c;
     cursor: not-allowed;
+    transform: none;
+    filter: none;
 }
+
+/* Submission Status */
 
 #statusMessage {
     text-align: center;
-    margin-top: 18px;
-    font-weight: bold;
+    margin-top: 16px;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 13px;
+    line-height: 1.6;
+    font-weight: 600;
 }
 
 .success {
-    color: green;
+    color: #28794b;
+    background: #f0faf3;
+    border: 1px solid #c8ebd2;
 }
 
 .error {
-    color: red;
+    color: #b83255;
+    background: #fff1f3;
+    border: 1px solid #f6ccd5;
+}
+
+/* Text Selection */
+
+::selection {
+    background: #f3bfd3;
+    color: #553447;
 }
 
 /* Mobile Responsive */
 
 @media (max-width: 600px) {
-
     body {
-        padding: 15px;
+        padding: 20px 13px;
+    }
+
+    .container {
+        max-width: 100%;
     }
 
     .form-box {
-        padding: 25px 20px;
+        padding: 30px 20px;
+        border-radius: 19px;
     }
 
     h1 {
-        font-size: 26px;
+        font-size: 28px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+        margin-bottom: 25px;
+    }
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+
+    input,
+    select,
+    textarea {
+        padding: 12px;
+        font-size: 14px;
     }
 
     .gender-options {
-        gap: 15px;
+        gap: 16px;
     }
 
+    button {
+        padding: 14px;
+    }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+    }
 }
